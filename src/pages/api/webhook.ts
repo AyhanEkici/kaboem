@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { kv } from '@vercel/kv';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
@@ -17,3 +16,8 @@ export default async function handler(req: NextRequest) {
   }
 
   if (event.type === 'checkout.session.completed') {
+    console.log('Betaling ontvangen:', event.data.object.id);
+  }
+
+  return NextResponse.json({ received: true });
+}
