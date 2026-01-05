@@ -7,3 +7,4 @@ export default defineConfig({
   output: 'server',
   adapter: vercel({ mode: 'serverless' }) // ✅ Zo kies je serverless mode
 });
+
