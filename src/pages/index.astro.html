@@ -1,0 +1,36 @@
+---
+// Offerteformulier – dynamische prijs
+const services = [
+  { id: 'onepager', label: '1-pager website', price: 199 },
+  { id: 'webshop', label: 'Webshop (basic)', price: 499 },
+  { id: 'cms', label: 'Blog + CMS', price: 299 },
+  { id: 'multilang', label: 'Meertalig (NL/EN)', price: 99 },
+  { id: 'seo', label: 'SEO + Analytics', price: 49 },
+  { id: 'domain', label: 'Domeinregistratie (1 jaar)', price: 15 }
+];
+---
+
+<div class="max-w-2xl mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-6">Kaboem – Jouw website in 3 stappen</h1>
+  
+  <form action="/api/quote/create-checkout" method="POST" id="quoteForm">
+    <div class="space-y-3">
+      {services.map(s => (
+        <label class="flex justify-between items-center p-3 border rounded">
+          <span>{s.label}</span>
+          <span>€{s.price}</span>
+          <input type="checkbox" name={s.id} value="true" />
+        </label>
+      ))}
+    </div>
+
+    <div class="mt-6 p-4 bg-gray-100 rounded">
+      <p class="text-lg">✅ Setupkosten: €79 (éénmalig)</p>
+      <p class="mt-2">Kies jouw opties → betaal → wacht. Kaboem!</p>
+    </div>
+
+    <button type="submit" class="mt-4 w-full bg-indigo-600 text-white py-3 rounded font-bold">
+      💳 Akkoord – Ga naar betaling
+    </button>
+  </form>
+</div>
