@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import vercel from '@astrojs/vercel/serverless'; // 👈 Add this
 
 export default defineConfig({
   integrations: [tailwind()],
-  output: 'server'  // 👈 THIS IS CRITICAL — must be 'server', not 'static'
+  output: 'server',
+  adapter: vercel() // 👈 Enable Vercel serverless functions
 });
